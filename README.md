@@ -1,27 +1,50 @@
 # Travelin
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
+Hola mi nombre es Marlon Santiago Henao Morera, les presento mi solución al reto.
+Para comenzar, deben saber que el proyecto fue realizado con el framework angular, en su última versión.
 
-## Development server
+Lo primero que deben hacer es clonar el repositorio o en su defecto descargar el archivo .zip que genera
+el gestor de repositorio. Una vez clonado o descargado en la ruta determinada que hayan elegido deben tener
+muy en cuenta que para que funcione el proyecto deben tener instalado el CLI ANGULAR y también node.js.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Se instala de la siguiente manera
 
-## Code scaffolding
+npm install -g @angular/cli
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Una vez instalado el CLI. Procederemos a compilar y ejecutar el proyecto en servidor local que nos proporciona
+ANGULAR con el siguiente comando
 
-## Build
+ng serve
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Una vez compilado y ejecutado, en el terminal nos arrojará una dirección ip (Local), la cual nos permitirá
+visualizar el aplicativo.
 
-## Running unit tests
+http://localhost:4200/
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+NOTA: en su defecto puede ser la dirección anterior o según el dispotivo puede cambiar el puerto.
 
-## Running end-to-end tests
+---------------------------------------------------------------------------------------------------------------
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+FUNCIONALIDAD
 
-## Further help
+-El aplicativo contiene un NAVBAR por diseño (SIN FUNCIONALIDAD)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+-En el cuerpo, contiene dos "SELECT" que nos permitirán elegir los origenes disponibles sin estar repetidos,
+lo mismo aplica para el destino.
+
+-Al generar el evento con el boton "Consultar", el programa determinará si la ruta fue encontrada o no; en caso
+de que se encuentre la ruta, se ilustrará. En caso de que no se encuentre la ruta, generará una alerta, indicando que esa ruta de viaje no existe.
+
+-En caso de que se encuentre la Ruta, permitirá visualizar la información del origen, destino, precio, numero de vuelo y tranportista.
+
+-También permite visualizar el precio del viaje en moneda colombiana(COP) y europea(EURO).
+
+
+NO SE IMPLEMENTÓ-----
+
+Algunos temas como testing, control de excepciones, entre las otras funcionalidades que se iban a valorar, no las logré implementar por tema de tiempo y alguna de ellas por no tener el Total Conocimiento. Aún así logré desarrollar el aplicativo con los requerimientos estipulados y con las buenas prácticas en el manejo de la información.
+
+
+
+
+

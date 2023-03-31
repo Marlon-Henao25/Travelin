@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
     this.getData();       
   }
 
+  //FUNCIÓN DEL SERVICIO APISERVICE QUE PERMITE CONSUMIR LA API PROPUESTA
   public getData(){ 
     this.apiService.getData()
     .subscribe((Data : any) => {
@@ -48,6 +49,7 @@ export class HomeComponent implements OnInit {
     ); 
   }
 
+  //FILTRADO PARA NO TRAER ORIGENES REPETIDOS EN LOS SELECT
   public noRepeatOrigin(Data : any){    
     for(let x of Data){
       if(x.departureStation != this.repeat){
@@ -57,6 +59,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  //FILTRADO PARA NO TRAER DESTINOS REPETIDOS EN LOS SELECT
   public noRepeatDestination(Data : any){
     for(let x of Data){
       if(x.arrivalStation != this.repeat){
@@ -66,11 +69,13 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  //BOTON BUSCAR RUTA
   public findRute(event : Event){
     event.preventDefault();    
     this.ruteResult(this.datalist);
   }
 
+  //LOGICA CALCULAR RUTA
   public ruteResult(datalist : any){            
     let count = false;
     this.ruteObtained.pop(); 
@@ -89,11 +94,13 @@ export class HomeComponent implements OnInit {
     }    
   }
 
+  //seleccionar y asignar valores de los select
   public ruteSelected(){
     this.originSelected = this.originSelected;    
     this.destinationSelected = this.destinationSelected;    
   }
 
+  //Conversión a pesos colombianos
   public COP(event : Event){    
     event.preventDefault(); 
     for(let i of this.ruteObtained){
@@ -101,6 +108,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  //Conversión a euros
   public EUR(event : Event){    
     event.preventDefault(); 
     for(let i of this.ruteObtained){
