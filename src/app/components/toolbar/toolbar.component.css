@@ -1,0 +1,19 @@
+#button-Navbar{
+  font-size: x-large;
+  border-radius: 9px;
+  color: azure;
+  border-color: darkgrey;
+}
+
+#button-Navbar:hover {
+  color: azure !important;
+  box-shadow: 0 4px 16px grey;
+  transition: all 0.2s ease;
+}
+
+.title-navbar{
+  color: azure;
+  font-size: x-large;
+  font-family:Verdana, Tahoma, sans-serif;
+}
+  

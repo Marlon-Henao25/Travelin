@@ -1,1 +1,41 @@
-<p>home works!</p>
+<div class="container text-center">
+    <div class="row align-items-start">
+        <div class="col-4" style="padding-top: 150px;">
+                <div class="row align-items-start">
+                    <div class="col">
+                        <label class="label-select">ORIGEN</label>
+                        <select id="form-select" class="form-select" aria-label="Default select example" [(ngModel)]="originSelected" (change)="ruteSelected()">
+                            <option selected>Elija Origen</option>
+                            <option *ngFor="let item of originAvailable">{{item}}</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label class="label-select">DESTINO</label>
+                        <select id="form-select" class="form-select" aria-label="Default select example" [(ngModel)]="destinationSelected" (change)="ruteSelected()">
+                            <option selected>Elija Destino</option>
+                            <option *ngFor="let item of destinationAvailable">{{item}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row align-items-center" style="justify-content: center; align-items: center; padding-top: 10px;">
+                    <div id="btn-rute" class="btn btn-dark" (click)="findRute($event)">Consultar</div>
+                </div>
+        </div>
+        <div class="col-8" style="padding-top: 150px;">            
+            <div *ngFor="let item of ruteObtained">
+                <h2>INFORMACIÓN RUTA</h2>
+                <li>Origen: {{item.origin}}</li>
+                <li>Destino: {{item.destination}}</li>
+                <li>Precio: {{item.price}} Dolares</li>
+                <div class="row align-items-center" style="justify-content: center; align-items: center; padding-top: 10px;">
+                    <div id="btn-divise" class="btn btn-dark align-items-center" (click)="COP($event)">COP</div>
+                    <span>PRECIO: {{priceCOP}} Pesos</span>                                    
+                <div class="row align-items-center" style="justify-content: center; align-items: center; padding-top: 10px;">
+                    <div id="btn-divise" class="btn btn-dark align-items-center" (click)="EUR($event)">EURO</div>
+                    <span>PRECIO: {{priceEUR}} Euros</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
