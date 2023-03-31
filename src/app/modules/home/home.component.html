@@ -26,6 +26,8 @@
                 <h2>INFORMACIÓN RUTA</h2>
                 <li>Origen: {{item.origin}}</li>
                 <li>Destino: {{item.destination}}</li>
+                <li>NRO Vuelo: {{item.flights[0].transport.flightNumber}}</li>
+                <li>Transportista: {{item.flights[0].transport.flightCarrier}}</li>
                 <li>Precio: {{item.price}} Dolares</li>
                 <div class="row align-items-center" style="justify-content: center; align-items: center; padding-top: 10px;">
                     <div id="btn-divise" class="btn btn-dark align-items-center" (click)="COP($event)">COP</div>

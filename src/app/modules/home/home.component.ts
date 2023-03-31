@@ -73,6 +73,7 @@ export class HomeComponent implements OnInit {
   public findRute(event : Event){
     event.preventDefault();    
     this.ruteResult(this.datalist);
+    console.log(this.ruteObtained);
   }
 
   //LOGICA CALCULAR RUTA
