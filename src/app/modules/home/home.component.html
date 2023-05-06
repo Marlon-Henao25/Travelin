@@ -1,6 +1,6 @@
-<div class="container text-center">
+<div class="container">
     <div class="row align-items-start">
-        <div class="col-4" style="padding-top: 150px;">
+        <div class="col-4 text-center" style="padding-top: 100px;">
                 <div class="row align-items-start">
                     <div class="col">
                         <label class="label-select">ORIGEN</label>
@@ -17,25 +17,26 @@
                         </select>
                     </div>
                 </div>
-                <div class="row align-items-center" style="justify-content: center; align-items: center; padding-top: 10px;">
+                <div class="row align-items-center" style="justify-content: center; align-items: center; padding-top: 20px;">
                     <div id="btn-rute" class="btn btn-dark" (click)="findRute($event)">Consultar</div>
                 </div>
         </div>
-        <div class="col-8" style="padding-top: 150px;">            
-            <div *ngFor="let item of ruteObtained">
-                <h2>INFORMACIÓN RUTA</h2>
-                <li>Origen: {{item.origin}}</li>
-                <li>Destino: {{item.destination}}</li>
-                <li>NRO Vuelo: {{item.flights[0].transport.flightNumber}}</li>
-                <li>Transportista: {{item.flights[0].transport.flightCarrier}}</li>
-                <li>Precio: {{item.price}} Dolares</li>
-                <div class="row align-items-center" style="justify-content: center; align-items: center; padding-top: 10px;">
-                    <div id="btn-divise" class="btn btn-dark align-items-center" (click)="COP($event)">COP</div>
-                    <span>PRECIO: {{priceCOP}} Pesos</span>                                    
-                <div class="row align-items-center" style="justify-content: center; align-items: center; padding-top: 10px;">
-                    <div id="btn-divise" class="btn btn-dark align-items-center" (click)="EUR($event)">EURO</div>
-                    <span>PRECIO: {{priceEUR}} Euros</span>
-                </div>
+        <div class="col-8" id="Info-Rute">                       
+            <h2>INFORMACIÓN RUTA</h2>
+            <div *ngFor="let item of ruteObtained" id="Info-Rute2">                
+                <ul>
+                    <li>Origen: {{item.origin}}</li>
+                    <li>Destino: {{item.destination}}</li>
+                    <li>NRO Vuelo: {{item.flights[0].transport.flightNumber}}</li>
+                    <li>Transportista: {{item.flights[0].transport.flightCarrier}}</li>
+                    <li>Precio:
+                        <ul>
+                            <dd>${{item.price}} USD</dd>
+                            <dd>${{item.price * 4645}} COP</dd>
+                            <dd>Є{{item.price * 0.92}} EUR</dd>
+                        </ul>
+                    </li>                
+                </ul>
             </div>
         </div>
     </div>

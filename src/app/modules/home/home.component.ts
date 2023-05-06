@@ -19,9 +19,7 @@ export class HomeComponent implements OnInit {
   originSelected: string | undefined;
   destinationSelected: string | undefined; 
   ruteObtained: any[] = [];
-  datalist: any[] = [];
-  priceCOP: number | undefined;
-  priceEUR: number | undefined;
+  datalist: any[] = [];  
   
   //CONSTRUCTOR
   constructor(private apiService : ApiService){
@@ -79,7 +77,7 @@ export class HomeComponent implements OnInit {
   //LOGICA CALCULAR RUTA
   public ruteResult(datalist : any){            
     let count = false;
-    this.ruteObtained.pop(); 
+    this.ruteObtained.pop();
     for(let x of datalist){               
       if(this.originSelected === x.departureStation && this.destinationSelected === x.arrivalStation){      
         let transport = new Transport(x.flightCarrier, x.flightNumber);
@@ -103,18 +101,14 @@ export class HomeComponent implements OnInit {
 
   //Conversión a pesos colombianos
   public COP(event : Event){    
-    event.preventDefault(); 
-    for(let i of this.ruteObtained){
-      this.priceCOP = Math.floor(i.price * 4645);
-    }
+    event.preventDefault();     
+      this.ruteObtained[0].price = Math.floor(this.ruteObtained[0].price * 4645);    
   }
 
   //Conversión a euros
   public EUR(event : Event){    
     event.preventDefault(); 
-    for(let i of this.ruteObtained){
-      this.priceEUR = Math.floor(i.price * 0.92);
-    }
+      this.ruteObtained[0].price = Math.floor(this.ruteObtained[0].price * 0.92);
   }
 
 }
