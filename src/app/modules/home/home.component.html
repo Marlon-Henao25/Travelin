@@ -21,23 +21,36 @@
                     <div id="btn-rute" class="btn btn-dark" (click)="findRute($event)">Consultar</div>
                 </div>
         </div>
-        <div class="col-8" id="Info-Rute">                       
-            <h2>INFORMACIÓN RUTA</h2>
-            <div *ngFor="let item of ruteObtained" id="Info-Rute2">                
-                <ul>
-                    <li>Origen: {{item.origin}}</li>
-                    <li>Destino: {{item.destination}}</li>
-                    <li>NRO Vuelo: {{item.flights[0].transport.flightNumber}}</li>
-                    <li>Transportista: {{item.flights[0].transport.flightCarrier}}</li>
-                    <li>Precio:
-                        <ul>
-                            <dd>${{item.price}} USD</dd>
-                            <dd>${{item.price * 4645}} COP</dd>
-                            <dd>Є{{item.price * 0.92}} EUR</dd>
-                        </ul>
-                    </li>                
-                </ul>
-            </div>
+        <div class="col-8" id="Info-Rute">
+            <div *ngFor="let item of ruteObtained" id="Info-Rute2">
+                <table class="table table-hover" id="table-res">
+                    <thead>
+                    <tr>                        
+                        <th colspan="4" scope="col"><h2>INFORMACIÓN RUTA</h2></th>                    
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">Origen</th>
+                        <td colspan="3">{{item.origin}}</td>                   
+                    </tr>
+                    <tr>
+                        <th scope="row">Destino</th>
+                        <td colspan="3">{{item.destination}}</td>                    
+                    </tr>
+                    <tr>
+                        <th scope="row">Vuelos</th>
+                        <td colspan="3">Larry the Bird</td>                    
+                    </tr>
+                    <tr>
+                        <th scope="row">Precio Total</th>
+                        <td>{{formatoMoneda(item.price, 'USD')}} USD</td>
+                        <td>{{formatoMoneda(item.price * 4527.05, 'COP')}} COP</td>
+                        <td>{{formatoMoneda(item.price * 0.89, 'EUR')}} EUR</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>                        
         </div>
     </div>
 </div>

@@ -16,11 +16,14 @@
 }
 
 #Info-Rute{
-    padding-top: 100px;
-    padding-left: 22.5%;
+    padding-top: 90px;    
 }
 
 #Info-Rute2{
     padding-top: 10px;
-    padding-left: 15%;
+    padding-left: 30%;
+}
+
+#table-res{
+    width: fit-content;
 }

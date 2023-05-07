@@ -1,14 +1,19 @@
 import { Flight } from "./flight";
+import { Transport } from "./transport";
 
 export class Journey extends Flight{
     flights: Flight[] = [];
 
-    constructor(origin: any, destination: any, price: any){            
+    constructor(origin: string, destination: string, price?: number){            
             super(origin, destination, price);                   
     }
 
-    addFlight(flight : Flight){
-        this.flights.push(flight);
+    public addFlight(flights: any){        
+        this.flights.push(flights);
+    }
+
+    public UpdatePrice(CurrentPrice : number){
+        this.price = CurrentPrice;
     }
 
 }

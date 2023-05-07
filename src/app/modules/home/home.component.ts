@@ -16,8 +16,8 @@ export class HomeComponent implements OnInit {
   originAvailable: string[] = [];
   destinationAvailable: string[] = [];
   repeat: string | undefined;
-  originSelected: string | undefined;
-  destinationSelected: string | undefined; 
+  originSelected!: string;
+  destinationSelected!: string; 
   ruteObtained: any[] = [];
   datalist: any[] = [];  
   
@@ -70,45 +70,75 @@ export class HomeComponent implements OnInit {
   //BOTON BUSCAR RUTA
   public findRute(event : Event){
     event.preventDefault();    
-    this.ruteResult(this.datalist);
-    console.log(this.ruteObtained);
+    this.ruteResult(this.originSelected, this.destinationSelected);    
   }
 
-  //LOGICA CALCULAR RUTA
-  public ruteResult(datalist : any){            
-    let count = false;
+  //LOGICA PARA CALCULAR SI LA RUTA EXISTE Y ESTÁ DISPONIBLE
+  public ruteResult(originSelected: string, destinationSelected: string, visitados: string[] = []){                
+
     this.ruteObtained.pop();
-    for(let x of datalist){               
-      if(this.originSelected === x.departureStation && this.destinationSelected === x.arrivalStation){      
-        let transport = new Transport(x.flightCarrier, x.flightNumber);
-        let flight = new Flight(x.departureStation, x.arrivalStation, x.price, transport);
-        let journey = new Journey(this.originSelected, this.destinationSelected, x.price);
-        journey.addFlight(flight)
+   
+    //CALCULAR RUTAS CON VUELOS MULTIPLES    
+    const cola: { origen: string; vuelos: any[]; precioTotal: number; escalas: number }[] = [];
+
+    // Agregar el primer vuelo a la cola
+    this.datalist.forEach((vuelo) => {
+      if (vuelo.departureStation === originSelected) {
+        cola.push({
+          origen: vuelo.arrivalStation,
+          vuelos: [vuelo],
+          precioTotal: vuelo.price,
+          escalas: 0,
+        });
+      }
+    });
+
+    // Recorrer la cola
+    while (cola.length > 0) {
+      const { origen, vuelos, precioTotal, escalas } = cola.shift()!;
+
+      // Si hemos llegado a nuestro destino, agregamos la ruta a la lista de rutas
+      if (origen === destinationSelected) {
+        let journey = new Journey(originSelected, destinationSelected);        
+        vuelos.forEach(flights => {
+          journey.addFlight(flights);
+          journey.UpdatePrice(precioTotal);          
+        });
         this.ruteObtained.push(journey);
-        count = true;        
-      }      
+        //Condición que verifica el número de escalas que tiene el vuelo
+      } else if(escalas < 3){        
+        this.datalist.forEach((vuelo) => {
+          if (vuelo.departureStation === origen) {
+            cola.push({
+              origen: vuelo.arrivalStation,
+              vuelos: [...vuelos, vuelo],
+              precioTotal: precioTotal + vuelo.price,
+              escalas: escalas + 1,
+            });
+          }
+        });
+      }
     }
-    if(count === false){
+
+    /*Condición que verifica si se encontró la ruta, en caso que no se haya encontrado,
+      se le informa al usuario mediante una alerta*/
+    if(this.ruteObtained.length === 0){
       alert("NO SE HA ENCONTRADO RUTA");
-    }    
-  }
+    }  
+
+  }   
 
   //seleccionar y asignar valores de los select
   public ruteSelected(){
     this.originSelected = this.originSelected;    
     this.destinationSelected = this.destinationSelected;    
-  }
+  }  
 
-  //Conversión a pesos colombianos
-  public COP(event : Event){    
-    event.preventDefault();     
-      this.ruteObtained[0].price = Math.floor(this.ruteObtained[0].price * 4645);    
+  public formatoMoneda(price: number, currency: string){
+      const formatoMoneda = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency
+    });
+    return formatoMoneda.format(price);
   }
-
-  //Conversión a euros
-  public EUR(event : Event){    
-    event.preventDefault(); 
-      this.ruteObtained[0].price = Math.floor(this.ruteObtained[0].price * 0.92);
-  }
-
 }
