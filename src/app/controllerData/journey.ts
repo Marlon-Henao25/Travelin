@@ -1,7 +1,12 @@
 import { Flight } from "./flight";
-import { Transport } from "./transport";
 
 export class Journey extends Flight{
+    static addFlight(flights: any) {
+      throw new Error('Method not implemented.');
+    }
+    static UpdatePrice(precioTotal: number) {
+      throw new Error('Method not implemented.');
+    }
     flights: Flight[] = [];
 
     constructor(origin: string, destination: string, price?: number){            

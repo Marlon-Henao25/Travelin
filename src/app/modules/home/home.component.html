@@ -39,8 +39,13 @@
                         <td colspan="3">{{item.destination}}</td>                    
                     </tr>
                     <tr>
-                        <th scope="row">Vuelos</th>
-                        <td colspan="3">Larry the Bird</td>                    
+                        <th scope="row" style="vertical-align: middle;">Vuelos</th>
+                        <td colspan="2" style="vertical-align: middle;">Esta ruta tiene {{item.flights.length}} vuelos</td>    
+                        <td>    
+                            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" style="text-align: center;">
+                                Ver Vuelos
+                            </button>                            
+                        </td>                    
                     </tr>
                     <tr>
                         <th scope="row">Precio Total</th>
@@ -54,4 +59,6 @@
         </div>
     </div>
 </div>
+<app-modal [rute]="ruteObtained"></app-modal>
+
         

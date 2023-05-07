@@ -1,0 +1,40 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Vuelos</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" *ngFor="let item of rute">
+            <div *ngFor="let item1 of item.flights; let i = index">
+                <table class="table table-hover" id="table-res">
+                    <thead>
+                        <tr>                        
+                            <th colspan="6" scope="col"><h2>Vuelo {{i+1}}</h2></th>                    
+                        </tr>
+                        <tr>                        
+                            <th scope="col"><h5>Origen</h5></th>
+                            <th scope="col"><h5>Destino</h5></th>                            
+                            <th scope="col"><h5>Número de Vuelo</h5></th>                            
+                            <th scope="col"><h5>Transportista</h5></th>                            
+                            <th scope="col"><h5>Precio</h5></th>                                                                              
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>                            
+                            <td>{{item1.departureStation}}</td>
+                            <td>{{item1.arrivalStation}}</td>
+                            <td>{{item1.flightNumber}}</td>
+                            <td>{{item1.flightCarrier}}</td>
+                            <td>{{item1.price}}</td>                            
+                        </tr>                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>          
+        </div>
+        </div>
+    </div>
+</div>

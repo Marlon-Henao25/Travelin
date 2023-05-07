@@ -50,8 +50,7 @@ export class HomeComponent implements OnInit {
   //FILTRADO PARA NO TRAER ORIGENES REPETIDOS EN LOS SELECT
   public noRepeatOrigin(Data : any){    
     for(let x of Data){
-      if(x.departureStation != this.repeat){
-        this.repeat = x.departureStation;
+      if(this.originAvailable.includes(x.departureStation)==false){        
         this.originAvailable.push(x.departureStation);
       }
     }
@@ -60,8 +59,7 @@ export class HomeComponent implements OnInit {
   //FILTRADO PARA NO TRAER DESTINOS REPETIDOS EN LOS SELECT
   public noRepeatDestination(Data : any){
     for(let x of Data){
-      if(x.arrivalStation != this.repeat){
-        this.repeat = x.arrivalStation;
+      if(this.destinationAvailable.includes(x.arrivalStation)==false){        
         this.destinationAvailable.push(x.arrivalStation);
       }
     }
@@ -70,11 +68,12 @@ export class HomeComponent implements OnInit {
   //BOTON BUSCAR RUTA
   public findRute(event : Event){
     event.preventDefault();    
-    this.ruteResult(this.originSelected, this.destinationSelected);    
+    this.ruteResult(this.originSelected, this.destinationSelected); 
+    console.log(this.ruteObtained);
   }
 
   //LOGICA PARA CALCULAR SI LA RUTA EXISTE Y ESTÁ DISPONIBLE
-  public ruteResult(originSelected: string, destinationSelected: string, visitados: string[] = []){                
+  public ruteResult(originSelected: string, destinationSelected: string){                
 
     this.ruteObtained.pop();
    
@@ -103,10 +102,11 @@ export class HomeComponent implements OnInit {
         vuelos.forEach(flights => {
           journey.addFlight(flights);
           journey.UpdatePrice(precioTotal);          
-        });
-        this.ruteObtained.push(journey);
-        //Condición que verifica el número de escalas que tiene el vuelo
-      } else if(escalas < 3){        
+        });        
+        this.ruteObtained.push(journey);        
+                   
+      }//Condición que verifica el número de escalas que tiene el vuelo
+      else if(escalas < 2){        
         this.datalist.forEach((vuelo) => {
           if (vuelo.departureStation === origen) {
             cola.push({
@@ -118,7 +118,26 @@ export class HomeComponent implements OnInit {
           }
         });
       }
+
     }
+
+    //Condicional que valida si hay más de 1 posible ruta y escoge la ruta más corta
+    if(this.ruteObtained.length>1){      
+      let maxArray = this.ruteObtained[0];
+      for (let i = 1; i < this.ruteObtained.length; i++) {
+        if (this.ruteObtained[i].length > maxArray.length) {
+          maxArray = this.ruteObtained[i];
+        }
+      }
+      this.ruteObtained.pop();
+      this.ruteObtained.push(maxArray);
+    }
+
+    
+
+    
+
+        
 
     /*Condición que verifica si se encontró la ruta, en caso que no se haya encontrado,
       se le informa al usuario mediante una alerta*/

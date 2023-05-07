@@ -1,1 +1,1 @@
-export * from './rute'
+export * from './modal';
