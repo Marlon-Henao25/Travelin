@@ -1,4 +1,4 @@
-# Travelin
+# Travelin V1
 
 Hola mi nombre es Marlon Santiago Henao Morera, les presento mi solución al reto.
 Para comenzar, deben saber que el proyecto fue realizado con el framework angular, en su última versión.
@@ -10,6 +10,10 @@ muy en cuenta que para que funcione el proyecto deben tener instalado el CLI ANG
 Se instala de la siguiente manera
 
 npm install -g @angular/cli
+
+Posteriormente ejecutar el comando a continuación para instalar los modulos de node
+
+npm install
 
 Una vez instalado el CLI. Procederemos a compilar y ejecutar el proyecto en servidor local que nos proporciona
 ANGULAR con el siguiente comando
