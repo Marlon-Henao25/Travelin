@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Flight } from 'src/app/controllerData/flight';
 import { Journey } from 'src/app/controllerData/journey';
-import { Transport } from 'src/app/controllerData/transport';
 import { ApiService } from 'src/app/services/api.service';
 
 
