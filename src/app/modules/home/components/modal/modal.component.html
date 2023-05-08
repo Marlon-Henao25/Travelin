@@ -17,7 +17,8 @@
                             <th scope="col"><h5>Destino</h5></th>                            
                             <th scope="col"><h5>Número de Vuelo</h5></th>                            
                             <th scope="col"><h5>Transportista</h5></th>                            
-                            <th scope="col"><h5>Precio</h5></th>                                                                              
+                            <th scope="col"><h5>Precio</h5></th>
+                            <th scope="col"><h5>Moneda</h5></th>                                                                         
                         </tr>
                     </thead>
                     <tbody>
@@ -26,8 +27,19 @@
                             <td>{{item1.arrivalStation}}</td>
                             <td>{{item1.flightNumber}}</td>
                             <td>{{item1.flightCarrier}}</td>
-                            <td>{{item1.price}}</td>                            
-                        </tr>                    
+                            <td>{{currencyFormat(item1.price, 'USD')}}</td>
+                            <td>Dolares</td>                            
+                        </tr>
+                        <tr>                                                        
+                            <td colspan="4"></td>                            
+                            <td>{{currencyFormat(item1.price * 4527.05, 'COP')}}</td>                            
+                            <td>Pesos C</td> 
+                        </tr>
+                        <tr>                                                 
+                            <td colspan="4"></td>                                   
+                            <td>{{currencyFormat(item1.price * 0.89, 'EUR')}}</td>
+                            <td>Euros</td>                            
+                        </tr>
                     </tbody>
                 </table>
             </div>

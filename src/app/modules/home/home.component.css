@@ -1,5 +1,9 @@
 #btn-rute{
-    max-width: 100px;
+    max-width: 120px;
+}
+
+#flightsNumber{
+    width: 30px;
 }
 
 #btn-divise{
@@ -24,6 +28,21 @@
     padding-left: 30%;
 }
 
+#Info-welcome{
+    padding-top: 80px;
+    padding-left: 30%;
+}
+
+#Info-welcome2{
+    padding-top: 10px;
+    padding-left: 45%;
+}
+
 #table-res{
     width: auto;
+}
+
+#return, #to{
+    display: none;
+    text-align: center;
 }

@@ -17,16 +17,30 @@
                         </select>
                     </div>
                 </div>
-                <div class="row align-items-center" style="justify-content: center; align-items: center; padding-top: 20px;">
-                    <div id="btn-rute" class="btn btn-dark" (click)="findRute($event)">Consultar</div>
+                <div class="row" style="justify-content: center; align-items: center; padding-top: 20px;">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Numero de Vuelos</span>
+                        <input id="flightsNumber" type="number" class="form-control" [(ngModel)]="escales" (change)="ruteSelected()">                       
+                    </div>                                        
+                </div>
+                <div class="row align-items-center" style="justify-content: center; align-items: center;">
+                    <div id="btn-rute" class="btn btn-dark" (click)="findRute($event, originSelected, destinationSelected);" onclick="showTo()">Buscar Ruta</div>
                 </div>
         </div>
         <div class="col-8" id="Info-Rute">
+            <div *ngIf="ruteObtained.length===0">
+                <h1 id="Info-welcome">Bienvenido a Travelin</h1>
+                <h2 id="Info-welcome2">Elige tu ruta</h2>    
+            </div>
+            <div id="to" *ngIf="ruteObtained.length>0"><h4>Ruta Ida</h4></div>
+            <div id="return"><h4>Ruta Retorno</h4></div>
             <div *ngFor="let item of ruteObtained" id="Info-Rute2">
                 <table class="table table-hover" id="table-res">
                     <thead>
                     <tr>                        
-                        <th colspan="4" scope="col"><h2>INFORMACIÓN RUTA</h2></th>                    
+                        <th colspan="4" scope="col">
+                            <h2>INFORMACIÓN RUTA</h2>                                                        
+                        </th>                    
                     </tr>
                     </thead>
                     <tbody>
@@ -40,22 +54,37 @@
                     </tr>
                     <tr>
                         <th scope="row" style="vertical-align: middle;">Vuelos</th>
-                        <td colspan="2" style="vertical-align: middle;">Esta ruta tiene {{item.flights.length}} vuelos</td>    
+                        <td colspan="2" style="vertical-align: middle;">Esta ruta tiene {{item.flights.length}} vuelo</td>    
                         <td>    
                             <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" style="text-align: center;">
-                                Ver Vuelos
+                                Vuelos
                             </button>                            
                         </td>                    
                     </tr>
                     <tr>
                         <th scope="row">Precio Total</th>
-                        <td>{{formatoMoneda(item.price, 'USD')}} USD</td>
-                        <td>{{formatoMoneda(item.price * 4527.05, 'COP')}} COP</td>
-                        <td>{{formatoMoneda(item.price * 0.89, 'EUR')}} EUR</td>
+                        <td>{{currencyFormat(item.price, 'USD')}} USD</td>
+                        <td>Dolares</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>{{currencyFormat(item.price * 4527.05, 'COP')}}</td>
+                        <td>Pesos Colombianos</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>{{currencyFormat(item.price * 0.89, 'EUR')}} EUR</td>
+                        <td>Euros</td>
+                        <td></td>
                     </tr>
                     </tbody>
                 </table>
-            </div>                        
+                <div class="row align-items-center" style="justify-content: center; align-items: center;">
+                    <div class="btn btn-dark" (click)="findRute($event, destinationSelected, originSelected)" style="max-width: 200px;" onclick="showReturn()">Consultar Retorno</div>
+                </div>
+            </div>                       
         </div>
     </div>
 </div>

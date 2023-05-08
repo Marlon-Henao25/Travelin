@@ -14,8 +14,18 @@
   <app-root></app-root>
 </body>
 <footer>
-  <div>
+  <div id="footer-text">
     Todos los derechos Reservados - Desarrollado por Marlon Santiago Henao
   </div>
 </footer>
+<script>
+  function showTo() {
+    document.getElementById("to").style.display = "block";
+    document.getElementById("return").style.display = "none";
+  }
+  function showReturn() {
+    document.getElementById("to").style.display = "none";
+    document.getElementById("return").style.display = "block";
+  }
+</script>
 </html>

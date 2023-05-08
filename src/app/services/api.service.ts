@@ -11,7 +11,7 @@ export class ApiService {
    }
   
   getData(){
-    return this.http.get("https://recruiting-api.newshore.es/api/flights/1");
+    return this.http.get("https://recruiting-api.newshore.es/api/flights/2");
   }
 
 }

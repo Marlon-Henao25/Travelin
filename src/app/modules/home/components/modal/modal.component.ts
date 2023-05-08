@@ -12,8 +12,15 @@ export class ModalComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.rute);
+  ngOnInit(): void {    
   }
+
+  public currencyFormat(price: number, currency: string){
+    const currencyFormat = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency
+  });
+  return currencyFormat.format(price);
+}
 
 }
