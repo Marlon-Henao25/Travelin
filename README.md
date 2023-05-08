@@ -1,6 +1,10 @@
 # Travelin V1
 
 Hola mi nombre es Marlon Santiago Henao Morera, les presento mi solución al reto.
+
+NOTA: Hay una segunda versión que contiene las funciones completas propuestas en la prueba. 
+      Se debe cambiar de rama a "Version2-Travelin. También encontrarán instrucciones.
+
 Para comenzar, deben saber que el proyecto fue realizado con el framework angular, en su última versión.
 
 Lo primero que deben hacer es clonar el repositorio o en su defecto descargar el archivo .zip que genera
