@@ -6,8 +6,8 @@
     width: 30px;
 }
 
-#btn-divise{
-    max-width: 80px;
+#btn-return{
+    max-width: 160px;
 }
 
 .label-select{
@@ -20,12 +20,7 @@
 }
 
 #Info-Rute{
-    padding-top: 90px;    
-}
-
-#Info-Rute2{
-    padding-top: 10px;
-    padding-left: 30%;
+    padding-top: 45px;    
 }
 
 #Info-welcome{
@@ -33,16 +28,36 @@
     padding-left: 30%;
 }
 
-#Info-welcome2{
-    padding-top: 10px;
+#Info-welcome2{    
     padding-left: 45%;
-}
-
-#table-res{
-    width: auto;
 }
 
 #return, #to{
     display: none;
     text-align: center;
 }
+
+#inputGroup-sizing-sm{
+    font-size:16.9px;
+}
+
+#table-res{
+    max-width: 100px;    
+}
+
+@media screen and (max-width: 775px) {
+    table, #inputGroup-sizing-sm, 
+    button, .label-select,
+    #form-select, #btn-rute,
+    #btn-return, #footer-text {
+      width: 100%;
+      font-size: 11.25px;
+    }
+    #Info-welcome, #Info-welcome2 {
+        width: 100%;
+        font-size: 19px;
+      }
+    th, td, span, button, #inputGroup-sizing-sm {
+      padding: 8px;
+    }
+  }

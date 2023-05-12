@@ -17,3 +17,13 @@ footer{
 #footer-text{
         padding-top: 10px;
 }
+
+@media screen and (max-width: 650px) {
+        #footer-text {
+          width: 100%;
+          font-size: 14px;
+        }
+        #footer-text{
+                padding: 10px;
+        }
+      }

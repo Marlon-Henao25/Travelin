@@ -18,8 +18,8 @@
                     </div>
                 </div>
                 <div class="row" style="justify-content: center; align-items: center; padding-top: 20px;">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Numero de Vuelos</span>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Numero de Vuelos</span>
                         <input id="flightsNumber" type="number" class="form-control" [(ngModel)]="escales" (change)="ruteSelected()">                       
                     </div>                                        
                 </div>
@@ -34,7 +34,8 @@
             </div>
             <div id="to" *ngIf="ruteObtained.length>0"><h4>Ruta Ida</h4></div>
             <div id="return"><h4>Ruta Retorno</h4></div>
-            <div *ngFor="let item of ruteObtained" id="Info-Rute2">
+            <div class="row align-items-center" style="justify-content: center; align-items: center;" 
+                        *ngFor="let item of ruteObtained" id="Info-Rute2">
                 <table class="table table-hover" id="table-res">
                     <thead>
                     <tr>                        
@@ -82,7 +83,7 @@
                     </tbody>
                 </table>
                 <div class="row align-items-center" style="justify-content: center; align-items: center;">
-                    <div class="btn btn-dark" (click)="findRute($event, destinationSelected, originSelected)" style="max-width: 200px;" onclick="showReturn()">Consultar Retorno</div>
+                    <div id="btn-return" class="btn btn-dark" (click)="findRute($event, destinationSelected, originSelected)" onclick="showReturn()">Consultar Retorno</div>
                 </div>
             </div>                       
         </div>
